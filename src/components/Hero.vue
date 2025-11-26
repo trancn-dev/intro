@@ -9,7 +9,8 @@
                 {{ data?.subtitle }}
               </h5>
               <h2 class="hero-title wow fadeInDown" data-wow-duration="2s" data-wow-delay=".2s">
-                {{ data?.title }}
+                <!-- {{ data?.title }} -->
+                <span v-html="data.title"></span>
                 <span class="typed-strings">
                   <span v-for="(str, index) in data?.extras?.typed_strings" :key="index" class="type_color">{{ str }}</span>
                 </span>

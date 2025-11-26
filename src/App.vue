@@ -20,6 +20,38 @@ const store = useIntroStore()
 const introData = computed(() => store.data)
 const loading = computed(() => store.loading)
 
+const componentsMap = {
+  Hero,
+  About,
+  Services,
+  VideoSkills,
+  Counter,
+  Portfolio,
+  Testimonials,
+  Pricing,
+  Blog,
+  Contact,
+  Partner
+}
+
+const getComponentProps = (name) => {
+  if (!introData.value) return {}
+  switch (name) {
+    case 'Hero': return { data: introData.value.sections.hero, socials: introData.value.socials }
+    case 'About': return { data: introData.value.sections.about }
+    case 'Services': return { services: introData.value.services }
+    case 'VideoSkills': return { data: introData.value.sections.video_skills, skills: introData.value.skills }
+    case 'Counter': return { counters: introData.value.counters }
+    case 'Portfolio': return { portfolios: introData.value.portfolios }
+    case 'Testimonials': return { testimonials: introData.value.testimonials }
+    case 'Pricing': return { pricing: introData.value.pricing }
+    case 'Blog': return { blogs: introData.value.blogs }
+    case 'Contact': return { settings: introData.value.settings }
+    case 'Partner': return { partners: introData.value.partners }
+    default: return {}
+  }
+}
+
 onMounted(async () => {
   await store.fetchIntroData()
 
@@ -35,17 +67,13 @@ onMounted(async () => {
   <div v-else-if="introData">
     <Header :settings="introData.settings" :socials="introData.socials" />
     <main class="main">
-      <Hero :data="introData.sections.hero" :socials="introData.socials" />
-      <About :data="introData.sections.about" />
-      <Services :services="introData.services" />
-      <VideoSkills :data="introData.sections.video_skills" :skills="introData.skills" />
-      <Counter :counters="introData.counters" />
-      <Portfolio :portfolios="introData.portfolios" />
-      <Testimonials :testimonials="introData.testimonials" />
-      <Pricing :pricing="introData.pricing" />
-      <Blog :blogs="introData.blogs" />
-      <Contact :settings="introData.settings" />
-      <Partner :partners="introData.partners" />
+      <template v-for="template in introData.templates" :key="template.id">
+        <component
+          :is="componentsMap[template.component_name]"
+          v-bind="getComponentProps(template.component_name)"
+          v-if="componentsMap[template.component_name]"
+        />
+      </template>
     </main>
     <div class="clearfix"></div>
     <Footer :settings="introData.settings" :socials="introData.socials" />
