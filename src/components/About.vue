@@ -6,7 +6,7 @@
           <div class="col-xl-6">
             <div class="about-left wow fadeInLeft" data-wow-duration="2s" data-wow-delay=".2s">
               <div class="about-pic">
-                <img src="/assets/img/01_koyta_img/about-me.png" alt="thumb">
+                <img :src="data?.image || '/assets/img/01_koyta_img/about-me.png'" alt="thumb">
               </div>
             </div>
           </div>
@@ -14,28 +14,25 @@
             <div class="about-right wow fadeInRight" data-wow-duration="2s" data-wow-delay=".2s">
               <div class="about-right-content">
                 <h5 class="about-sub-title">
-                  about Us
+                  {{ data?.subtitle }}
                 </h5>
                 <h2 class="about-title">
-                  Hi there, I’m <span>Herry Jason</span>
+                  {{ data?.title }}
                 </h2>
                 <h5 class="about-title-3">
-                  Photographer based in newyork, usa
+                  {{ data?.extras?.sub_title_3 }}
                 </h5>
                 <div class="about-txt mb-30">
                   <p>
-                    Eeniam possimus magni quia posuere praesentium laboriosam laudantium laborum quam dignissim nihil fugiat cursus, elementum deleniti molestiae assumenda. Lste voluptatibus nascetur luctus vitae quam.
-                  </p>
-                  <p class="mb-0">
-                    Dignissimos nobis dignissim tristique, sequi occaecat cum auctor facilis interdum torquent pulvinar tenetur tempor ibendum quod.
+                    {{ data?.description }}
                   </p>
                 </div>
                 <div class="about-btns">
-                  <a href="#" class="tm-btn-2">
+                  <a :href="data?.extras?.cv_link || '#'" class="tm-btn-2">
                     Download CV
                     <i class="fas fa-arrow-down"></i>
                   </a>
-                  <a href="#" class="tm-btn-3">
+                  <a :href="data?.extras?.print_cv_link || '#'" class="tm-btn-3">
                     <i class="fas fa-print"></i>
                     Print Cv
                   </a>
@@ -50,5 +47,7 @@
 </template>
 
 <script setup>
-// About logic
+defineProps({
+  data: Object
+})
 </script>

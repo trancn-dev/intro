@@ -3,43 +3,15 @@
     <div class="container">
       <div class="counter-vidz">
         <div class="counter-wpr grid-3">
-          <div class="fun-fact">
+          <div v-for="counter in counters" :key="counter.id" class="fun-fact">
             <div class="fun-fact-icon">
-              <img src="/assets/img/01_koyta_img/icon/c1.png" alt="thumb">
+              <img :src="counter.icon" alt="thumb">
             </div>
             <div class="fun-desc">
               <span class="medium">
-                Year of
-                <br>
-                Experience
+                {{ counter.title }}
               </span>
-              <p class="timer" data-count="+"  data-to="20" data-speed="3000">20</p>
-            </div>
-          </div>
-          <div class="fun-fact">
-            <div class="fun-fact-icon">
-              <img src="/assets/img/01_koyta_img/icon/c2.png" alt="thumb">
-            </div>
-            <div class="fun-desc">
-              <span class="medium">
-                Global Working
-                <br>
-                Client
-              </span>
-              <p class="timer" data-count="+" data-to="20" data-speed="3000">20</p>
-            </div>
-          </div>
-          <div class="fun-fact">
-            <div class="fun-fact-icon">
-              <img src="/assets/img/01_koyta_img/icon/c3.png" alt="thumb">
-            </div>
-            <div class="fun-desc">
-              <span class="medium">
-                Awards
-                <br>
-                Win
-              </span>
-              <p class="timer" data-count="+" data-to="20" data-speed="3000">20</p>
+              <p class="timer" data-count="+" :data-to="counter.number" data-speed="3000">{{ counter.number }}</p>
             </div>
           </div>
         </div>
@@ -49,5 +21,7 @@
 </template>
 
 <script setup>
-// Counter logic
+defineProps({
+  counters: Array
+})
 </script>

@@ -5,7 +5,7 @@
         <div class="copyright">
           <div class="row align-items-center">
             <div class="col-xl-4">
-              <p>@ 2025 Themetum. All right reserved</p>
+              <p>{{ settings?.copyright_text }}</p>
             </div>
             <div class="col-xl-4">
               <ul class="footer-menu">
@@ -28,11 +28,9 @@
             </div>
             <div class="col-xl-4">
               <ul class="footer-social">
-                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                <li><a href="#"><i class="fab fa-behance"></i></a></li>
-                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                <li v-for="social in socials" :key="social.id">
+                  <a :href="social.url"><i :class="social.icon"></i></a>
+                </li>
               </ul>
             </div>
           </div>
@@ -48,5 +46,8 @@
 </template>
 
 <script setup>
-// Footer logic
+defineProps({
+  settings: Object,
+  socials: Array
+})
 </script>

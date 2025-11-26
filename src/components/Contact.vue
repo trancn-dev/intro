@@ -24,8 +24,7 @@
                   </div>
                   <div class="contact-addr-desc">
                     <h4>Phone Number</h4>
-                    <span>+435-64773728,</span> <br>
-                    <span>+062-35363782588</span>
+                    <span>{{ settings?.contact_phone }}</span>
                   </div>
                 </div>
               </div>
@@ -36,8 +35,7 @@
                   </div>
                   <div class="contact-addr-desc">
                     <h4>Mail Address</h4>
-                    <span>Apoyoxo@gmail.com</span>
-                    <span>Vestorygasmo@gmail.com</span>
+                    <span>{{ settings?.contact_email }}</span>
                   </div>
                 </div>
               </div>
@@ -48,8 +46,7 @@
                   </div>
                   <div class="contact-addr-desc">
                     <h4>Office Address</h4>
-                    <span>FA - 154 Careon Street,</span>
-                    <span>California, USA</span>
+                    <span>{{ settings?.contact_address }}</span>
                   </div>
                 </div>
               </div>
@@ -88,5 +85,7 @@
 </template>
 
 <script setup>
-// Contact logic
+defineProps({
+  settings: Object
+})
 </script>

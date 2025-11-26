@@ -14,42 +14,15 @@
         </div>
       </div>
       <div class="feed-wpr feed-sldr owl-carousel owl-theme">
-        <div class="feed-box">
+        <div v-for="item in testimonials" :key="item.id" class="feed-box">
           <p>
-            Copibus conubia magnis. Do faucibus volutpat vel
-            excepturi accumsan hendrerit morbi leo, rerum excepturi aptent torquent voluptatum ridiculus pariatur vehicula metus inceptos earum ab erat repudiandae
+            {{ item.content }}
           </p>
           <div class="feed-bio">
-            <img src="/assets/img/01_koyta_img/client1.png" alt="thumb">
+            <img :src="item.avatar" alt="thumb">
             <div class="feed-name">
-              <h5>Michael Daniel</h5>
-              <span>CEO of ManySoft agency</span>
-            </div>
-          </div>
-        </div>
-        <div class="feed-box">
-          <p>
-            Copibus conubia magnis. Do faucibus volutpat vel
-            excepturi accumsan hendrerit morbi leo, rerum excepturi aptent torquent voluptatum ridiculus pariatur vehicula metus inceptos earum ab erat repudiandae
-          </p>
-          <div class="feed-bio">
-            <img src="/assets/img/01_koyta_img/client2.png" alt="thumb">
-            <div class="feed-name">
-              <h5>Michael Daniel</h5>
-              <span>CEO of ManySoft agency</span>
-            </div>
-          </div>
-        </div>
-        <div class="feed-box">
-          <p>
-            Copibus conubia magnis. Do faucibus volutpat vel
-            excepturi accumsan hendrerit morbi leo, rerum excepturi aptent torquent voluptatum ridiculus pariatur vehicula metus inceptos earum ab erat repudiandae
-          </p>
-          <div class="feed-bio">
-            <img src="/assets/img/01_koyta_img/client1.png" alt="thumb">
-            <div class="feed-name">
-              <h5>Michael Daniel</h5>
-              <span>CEO of ManySoft agency</span>
+              <h5>{{ item.name }}</h5>
+              <span>{{ item.role }}</span>
             </div>
           </div>
         </div>
@@ -59,5 +32,7 @@
 </template>
 
 <script setup>
-// Testimonials logic
+defineProps({
+  testimonials: Array
+})
 </script>

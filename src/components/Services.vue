@@ -15,122 +15,17 @@
       </div>
       <div class="service-wpr">
         <div class="row g-5">
-          <div class="col-xl-4 col-md-6">
+          <div v-for="service in services" :key="service.id" class="col-xl-4 col-md-6">
             <div class="service-box">
               <div class="service-icon">
                 <i>
-                  <img src="/assets/img/01_koyta_img/icon/1.png" alt="thumb">
+                  <img :src="service.icon" alt="thumb">
                 </i>
               </div>
               <div class="service-content">
-                <h4>Graphics Design</h4>
-                <ul class="service-tag">
-                  <li><a href="#">Web</a></li>
-                  <li><a href="#">Graphics</a></li>
-                  <li><a href="#">SEO</a></li>
-                </ul>
+                <h4>{{ service.title }}</h4>
                 <p>
-                  I have been providing web design services with great success for 9 years. The client is very happy
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-4 col-md-6">
-            <div class="service-box">
-              <div class="service-icon">
-                <i>
-                  <img src="/assets/img/01_koyta_img/icon/2.png" alt="thumb">
-                </i>
-              </div>
-              <div class="service-content">
-                <h4>Web Design</h4>
-                <ul class="service-tag">
-                  <li><a href="#">Web</a></li>
-                  <li><a href="#">Graphics</a></li>
-                  <li><a href="#">SEO</a></li>
-                </ul>
-                <p>
-                  I have been providing web design services with great success for 9 years. The client is very happy
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-4 col-md-6">
-            <div class="service-box">
-              <div class="service-icon">
-                <i>
-                  <img src="/assets/img/01_koyta_img/icon/3.png" alt="thumb">
-                </i>
-              </div>
-              <div class="service-content">
-                <h4>Trendy Work</h4>
-                <ul class="service-tag">
-                  <li><a href="#">Web</a></li>
-                  <li><a href="#">Graphics</a></li>
-                  <li><a href="#">SEO</a></li>
-                </ul>
-                <p>
-                  I have been providing web design services with great success for 9 years. The client is very happy
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-4 col-md-6">
-            <div class="service-box">
-              <div class="service-icon">
-                <i>
-                  <img src="/assets/img/01_koyta_img/icon/4.png" alt="thumb">
-                </i>
-              </div>
-              <div class="service-content">
-                <h4>Easy To Customize</h4>
-                <ul class="service-tag">
-                  <li><a href="#">Web</a></li>
-                  <li><a href="#">Graphics</a></li>
-                  <li><a href="#">SEO</a></li>
-                </ul>
-                <p>
-                  I have been providing web design services with great success for 9 years. The client is very happy
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-4 col-md-6">
-            <div class="service-box">
-              <div class="service-icon">
-                <i>
-                  <img src="/assets/img/01_koyta_img/icon/5.png" alt="thumb">
-                </i>
-              </div>
-              <div class="service-content">
-                <h4>Adobe Photoshop</h4>
-                <ul class="service-tag">
-                  <li><a href="#">Web</a></li>
-                  <li><a href="#">Graphics</a></li>
-                  <li><a href="#">SEO</a></li>
-                </ul>
-                <p>
-                  I have been providing web design services with great success for 9 years. The client is very happy
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-4 col-md-6">
-            <div class="service-box">
-              <div class="service-icon">
-                <i>
-                  <img src="/assets/img/01_koyta_img/icon/6.png" alt="thumb">
-                </i>
-              </div>
-              <div class="service-content">
-                <h4>Web Development</h4>
-                <ul class="service-tag">
-                  <li><a href="#">Web</a></li>
-                  <li><a href="#">Graphics</a></li>
-                  <li><a href="#">SEO</a></li>
-                </ul>
-                <p>
-                  I have been providing web design services with great success for 9 years. The client is very happy
+                  {{ service.description }}
                 </p>
               </div>
             </div>
@@ -142,5 +37,7 @@
 </template>
 
 <script setup>
-// Services logic
+defineProps({
+  services: Array
+})
 </script>

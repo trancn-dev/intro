@@ -18,6 +18,7 @@
           <button class="btn fil-cat filter active"  data-filter="all">
                All
           </button>
+          <!-- Note: Dynamic filters would require extracting unique categories from portfolios -->
           <button class="btn fil-cat filter" data-rel="web" data-filter=".web">
             UI Design
           </button>
@@ -36,95 +37,15 @@
         </div>
         <div id="portfolio" class="magnific-mix-gallery">
           <div class="row g-5">
-            <div class="col-xl-3 col-md-6 col-lg-6">
-              <div class="project-box tile scale-anm web graphic" >
+            <div v-for="item in portfolios" :key="item.id" :class="`col-xl-3 col-md-6 col-lg-6 mix ${item.category}`">
+              <div class="project-box tile scale-anm" >
                 <div class="port-pic">
-                  <img src="/assets/img/01_koyta_img/portfolio/1.png" alt="thumb">
+                  <img :src="item.image" alt="thumb">
                   <div class="port-overlay">
                     <div class="port-content">
-                      <h5>01. Cteative Frame</h5>
-                      <span>Web Design</span>
-                      <a href="/assets/img/01_koyta_img/portfolio/1.png" class="item popup-link">
-                        <i class="fas fa-eye"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-md-6  col-lg-6">
-              <div class="project-box tile scale-anm flyers wordpress">
-                <div class="port-pic">
-                  <img src="/assets/img/01_koyta_img/portfolio/2.png" alt="thumb">
-                  <div class="port-overlay">
-                    <div class="port-content">
-                      <h5>02. Cteative Frame</h5>
-                      <span>Web Design</span>
-                      <a href="/assets/img/01_koyta_img/portfolio/2.png" class="item popup-link">
-                        <i class="fas fa-eye"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-6 col-md-6  col-lg-6">
-              <div class="project-box tile scale-anm web illus">
-                <div class="port-pic">
-                  <img src="/assets/img/01_koyta_img/portfolio/3.png" class="ht" alt="thumb">
-                  <div class="port-overlay">
-                    <div class="port-content">
-                      <h5>03. Cteative Frame</h5>
-                      <span>Web Design</span>
-                      <a href="/assets/img/01_koyta_img/portfolio/3.png" class="item popup-link">
-                        <i class="fas fa-eye"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-6 col-md-6  col-lg-6">
-              <div class="project-box tile scale-anm flyers">
-                <div class="port-pic">
-                  <img src="/assets/img/01_koyta_img/portfolio/4.png" alt="thumb">
-                  <div class="port-overlay">
-                    <div class="port-content">
-                      <h5>04. Cteative Frame</h5>
-                      <span>Web Design</span>
-                      <a href="/assets/img/01_koyta_img/portfolio/4.png" class="item popup-link">
-                        <i class="fas fa-eye"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-md-6  col-lg-6">
-              <div class="project-box tile scale-anm web" >
-                <div class="port-pic">
-                  <img src="/assets/img/01_koyta_img/portfolio/5.png" alt="thumb">
-                  <div class="port-overlay">
-                    <div class="port-content">
-                      <h5>05. Cteative Frame</h5>
-                      <span>Web Design</span>
-                      <a href="/assets/img/01_koyta_img/portfolio/5.png" class="item popup-link">
-                        <i class="fas fa-eye"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-md-6 col-lg-6">
-              <div class="project-box tile scale-anm bcards" >
-                <div class="port-pic">
-                  <img src="/assets/img/01_koyta_img/portfolio/6.png" alt="thumb">
-                  <div class="port-overlay">
-                    <div class="port-content">
-                      <h5>06. Cteative Frame</h5>
-                      <span>Web Design</span>
-                      <a href="/assets/img/01_koyta_img/portfolio/6.png" class="item popup-link">
+                      <h5>{{ item.title }}</h5>
+                      <span>{{ item.category }}</span>
+                      <a :href="item.image" class="item popup-link">
                         <i class="fas fa-eye"></i>
                       </a>
                     </div>
@@ -134,18 +55,13 @@
             </div>
           </div>
         </div>
-        <!--Portfolio-->
-      </div>
-      <div class="port-load text-center mt-70">
-        <a href="#" class="tm-btn-2">
-          Load More
-          <i class="fas fa-chevron-right"></i>
-        </a>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-// Portfolio logic
+defineProps({
+  portfolios: Array
+})
 </script>
